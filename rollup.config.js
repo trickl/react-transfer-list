@@ -7,6 +7,7 @@ import packageJson from './package.json';
 
 const rollupConfig = {
   input: './src/index.ts',
+  external: ['react', 'react-dom', 'prop-types'],
   output: [
     {
       file: packageJson.main,

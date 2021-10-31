@@ -1,4 +1,4 @@
-import { clone } from 'lodash';
+import clone from 'lodash/clone';
 import { FunctionComponent, useCallback, useReducer } from 'react';
 
 import { TransferList, TransferListProps } from './TransferList';
