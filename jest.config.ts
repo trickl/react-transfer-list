@@ -7,7 +7,7 @@ const config: Config.InitialOptions = {
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'tsx', 'js'],
-  rootDir: "src",
+  rootDir: 'src',
 };
 
 export default config;
