@@ -2,8 +2,16 @@
   "name": "react-transfer-list",
   "version": "1.0.0",
   "private": true,
-  "author": "Tim Gee",
   "description": "A Material UI based Transfer List supporting drag and drop",
+  "repository": "https://github.com/trickl/react-transfer-list",
+  "author": {
+    "name": "Tim Gee",
+    "url": "https://github.com/trickl"
+  },
+  "bugs": {
+    "url": "https://github.com/trickl/react-transfer-list/issues"
+  },
+  "license": "MIT",
   "keywords": [
     "react",
     "react-component",
