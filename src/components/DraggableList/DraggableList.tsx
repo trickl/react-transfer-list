@@ -50,6 +50,7 @@ export const DraggableList: FunctionComponent<DraggableListProps> = ({
             {ids.map((id, index) => (
               <DraggableListItem
                 index={index}
+                key={id}
                 id={id}
                 {...{ dragHandleComponent, listItemBodyComponent }}
               />
