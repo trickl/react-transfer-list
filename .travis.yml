@@ -10,3 +10,11 @@ jobs:
      # 👇 Verifies the build event type or a if it's a forked repository
      if: (type = push OR head_repo != repo )
      script: npx chromatic --project-token=${CHROMATIC_PROJECT_TOKEN}
+
+deploy:
+  provider: npm
+  email: writetotimgee@gmail.com
+  api_key: ${NPM_AUTH_TOKEN}
+  on:
+    branch: master
+    tags: true
