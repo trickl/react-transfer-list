@@ -1,0 +1,60 @@
+{
+  "extends": [
+    "react-app",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "plugins": [
+    "jsx-a11y",
+    "@typescript-eslint",
+    "prettier",
+    "react",
+    "react-hooks",
+    "tsc",
+    "simple-import-sort"
+  ],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jasmine": true,
+    "jest": true
+  },
+  "rules": {
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "@typescript-eslint/explicit-function-return-type": "off",    
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "tsc/config": [
+          1,
+          {
+            "configFile": "tsconfig.json"
+          }
+        ]
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["components", "./lib/src/components"],
+          ["hooks", "./lib/src/hooks"]
+        ],
+        "extensions": [".ts", ".js", ".tsx", ".json"]
+      }
+    },
+    "import/ignore": ["node_modules"]
+  },
+  "parser": "@typescript-eslint/parser"
+}
