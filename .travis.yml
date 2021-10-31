@@ -1,3 +1,12 @@
 language: node_js
 node_js:
   - lts/*
+jobs:
+  include:
+     # Other jobs
+
+     # 👇 Adds Chromatic as a job
+   - name: 'Publish to Chromatic'
+     # 👇 Verifies the build event type or a if it's a forked repository
+     if: (type = push OR head_repo != repo )
+     script: npm chromatic --project-token={CHROMATIC_PROJECT_TOKEN}
