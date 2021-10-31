@@ -6,5 +6,10 @@
 
 A Material UI based Transfer List supporting drag and drop.
 
-##Storybook
+## Install
+```bash
+npm i react-transfer-list
+```
+
+## Usage and Demo
 [Visit The Storybook Page](https://master--617ed0e7e88637004aa2ac53.chromatic.com/?path=/story/snowfox-controls-uncontrolledtransferlist--three-way-transfer-list)
