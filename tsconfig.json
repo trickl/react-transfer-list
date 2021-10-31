@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "build",
+    "declarationDir": "dist",
     "baseUrl": "src",
     "module": "esnext",
     "target": "es6",
@@ -27,7 +27,7 @@
     "noEmit": true
   },
   "exclude": [
-    "build",
+    "dist",
     "node_modules"
   ],
   "include": [

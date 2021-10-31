@@ -13,10 +13,10 @@
     "draggable",
     "ui"
   ],
-  "main": "build/index.js",
-  "module": "build/index.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "files": [
-    "build"
+    "dist"
   ],
   "devDependencies": {
     "@babel/core": "^7.12.10",
