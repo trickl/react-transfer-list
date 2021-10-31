@@ -116,8 +116,7 @@
     "eslint-rules": "eslint-find-rules .eslintrc.json --current",
     "prettier": "prettier --single-quote --write 'src/**/*.{jsx,js,ts,tsx,scss}'",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
-    "chromatic": "npx chromatic --project-token=1867280b2c91"
+    "build-storybook": "build-storybook -s public"
   },
   "husky": {
     "hooks": {
