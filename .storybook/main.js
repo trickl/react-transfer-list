@@ -20,6 +20,12 @@ module.exports = {
       ...config.resolve?.alias,
       'components': path.resolve(__dirname, '../src/components'),
     };
+
+    // https://github.com/mui-org/material-ui/issues/24282
+    // Waiting for Storybook 6.4 to resolve
+    delete config.resolve.alias['emotion-theming'];
+    delete config.resolve.alias['@emotion/styled'];
+    delete config.resolve.alias['@emotion/core'];
     return config;
   },
 };

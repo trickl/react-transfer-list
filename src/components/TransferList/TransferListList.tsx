@@ -1,4 +1,5 @@
-import { Paper, styled } from '@mui/material';
+import { Paper, Theme } from '@mui/material';
+import { styled } from '@mui/styles';
 import cn from 'classnames';
 import { FunctionComponent, HTMLProps, useContext } from 'react';
 
@@ -12,7 +13,7 @@ const classes = {
   list: `${PREFIX}-list`,
 };
 
-const StyledPaper = styled(Paper)(({ theme }) => ({
+const StyledPaper = styled(Paper)(({ theme }: { theme: Theme }) => ({
   [`&.${classes.container}`]: {
     margin: theme.spacing(1),
     padding: theme.spacing(1),

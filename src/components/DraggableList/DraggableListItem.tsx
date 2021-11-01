@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     marginRight: '5px',
   },
   dragging: {
-    background: 'rgb(235, 235, 235)',
+    opacity: 0.8,
   },
   listItem: {
     marginBottom: '0',

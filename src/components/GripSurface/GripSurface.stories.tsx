@@ -9,7 +9,5 @@ export default {
 } as Meta;
 
 export const gripSurface = (): ReactElement => {
-  return (
-    <GripSurface style={{ width: '8px', height: '12px', padding: '1em' }} />
-  );
+  return <GripSurface style={{ width: '40px', height: '40px' }} />;
 };

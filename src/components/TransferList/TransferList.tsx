@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { styled } from '@mui/styles';
 import cn from 'classnames';
 import { FunctionComponent, HTMLProps, useCallback } from 'react';
 
@@ -10,7 +10,7 @@ const classes = {
   container: `${PREFIX}-container`,
 };
 
-const StyledDiv = styled('div')(({ theme }) => ({
+const StyledDiv = styled('div')(({ theme }: { theme: Theme }) => ({
   [`&.${classes.container}`]: {
     margin: theme.spacing(1),
     display: 'flex',

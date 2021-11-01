@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { styled } from '@mui/styles';
 import cn from 'classnames';
 import { FunctionComponent, HTMLProps, useCallback, useMemo } from 'react';
 
