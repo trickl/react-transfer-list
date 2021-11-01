@@ -9,7 +9,7 @@ jobs:
    - name: 'Publish to Chromatic'
      # 👇 Verifies the build event type or a if it's a forked repository
      if: (type = push OR head_repo != repo )
-     script: npx chromatic --project-token=${CHROMATIC_PROJECT_TOKEN}
+     script: npx chromatic --project-token=${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
 
 deploy:
   provider: npm
