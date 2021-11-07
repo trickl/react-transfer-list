@@ -1,4 +1,4 @@
-import { styled } from '@mui/styles';
+import styled from '@emotion/styled';
 import cn from 'classnames';
 import { FunctionComponent, HTMLProps, useCallback } from 'react';
 
@@ -10,9 +10,8 @@ const classes = {
   container: `${PREFIX}-container`,
 };
 
-const StyledDiv = styled('div')(({ theme }: { theme: Theme }) => ({
+const Container = styled('div')(() => ({
   [`&.${classes.container}`]: {
-    margin: theme.spacing(1),
     display: 'flex',
     flexDirection: 'row',
   },
@@ -22,8 +21,6 @@ export interface TransferListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
   ids: { [droppableId: string]: string[] };
   onChange?: (droppableId: string, ids: string[]) => void;
-  dragHandleComponent?: FunctionComponent<Record<string, never>>;
-  listItemBodyComponent?: FunctionComponent<{ id: string }>;
 }
 
 export const TransferList: FunctionComponent<TransferListProps> = ({
@@ -40,10 +37,10 @@ export const TransferList: FunctionComponent<TransferListProps> = ({
   );
 
   return (
-    <StyledDiv className={cn(classes.container, className)}>
+    <Container className={cn(classes.container, className)}>
       <TransferListContextProvider listIds={ids} onChange={handleChange}>
         {children}
       </TransferListContextProvider>
-    </StyledDiv>
+    </Container>
   );
 };

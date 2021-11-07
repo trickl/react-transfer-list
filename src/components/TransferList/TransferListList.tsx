@@ -1,7 +1,6 @@
-import { Paper, Theme } from '@mui/material';
-import { styled } from '@mui/styles';
+import styled from '@emotion/styled';
 import cn from 'classnames';
-import { FunctionComponent, HTMLProps, useContext } from 'react';
+import { FunctionComponent, HTMLProps, ReactNode, useContext } from 'react';
 
 import { DraggableList } from '../DraggableList/DraggableList';
 import { TransferListContext } from './TransferListContext';
@@ -13,10 +12,8 @@ const classes = {
   list: `${PREFIX}-list`,
 };
 
-const StyledPaper = styled(Paper)(({ theme }: { theme: Theme }) => ({
+const Container = styled.div(() => ({
   [`&.${classes.container}`]: {
-    margin: theme.spacing(1),
-    padding: theme.spacing(1),
     minWidth: 100,
     height: '100%',
     display: 'flex',
@@ -37,6 +34,8 @@ export interface TransferListListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'as'> {
   id: string;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
+  listComponent?: FunctionComponent<{ children?: ReactNode }>;
+  listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
   listItemBodyComponent?: FunctionComponent<{ id: string }>;
 }
 
@@ -48,7 +47,7 @@ export const TransferListList: FunctionComponent<TransferListListProps> = ({
   const { handleDragEnd, listIds } = useContext(TransferListContext);
 
   return (
-    <StyledPaper className={cn(classes.container, className)}>
+    <Container className={cn(classes.container, className)}>
       <StyledDraggableList
         className={classes.list}
         droppableId={id}
@@ -56,6 +55,6 @@ export const TransferListList: FunctionComponent<TransferListListProps> = ({
         onDragEnd={handleDragEnd}
         {...otherProps}
       />
-    </StyledPaper>
+    </Container>
   );
 };

@@ -1,13 +1,19 @@
+import { DragIndicator } from '@mui/icons-material';
 import InboxIcon from '@mui/icons-material/Inbox';
-import { Avatar, ListItemAvatar, ListItemText } from '@mui/material';
+import {
+  Avatar,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from '@mui/material';
 import { Meta, Story } from '@storybook/react';
 
-import { DragHandle } from '../DragHandle/DragHandle';
 import { ReorderableListProps } from './ReorderableList';
 import { UncontrolledReorderableList } from './UncontrolledReorderableList';
 
 export default {
-  title: 'Snowfox/Controls/UncontrolledReorderableList',
+  title: 'Reorderable List',
   component: UncontrolledReorderableList,
 } as Meta;
 
@@ -15,12 +21,12 @@ const Template: Story<ReorderableListProps> = (args) => (
   <UncontrolledReorderableList {...args} />
 );
 
-export const SimpleNumberedList = Template.bind({});
-SimpleNumberedList.args = {
+export const UnstyledList = Template.bind({});
+UnstyledList.args = {
   ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
 };
 
-const CustomListItemBody = ({ id }: { id: string }) => (
+const ListItemBody = ({ id }: { id: string }) => (
   <>
     <ListItemAvatar>
       <Avatar>
@@ -34,16 +40,19 @@ const CustomListItemBody = ({ id }: { id: string }) => (
   </>
 );
 
-export const CustomListItemBodyExample = Template.bind({});
-CustomListItemBodyExample.args = {
+export const MaterialUIExample = Template.bind({});
+MaterialUIExample.args = {
   ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
-  listItemBodyComponent: CustomListItemBody,
+  listComponent: List,
+  listItemComponent: ListItem,
+  listItemBodyComponent: ListItemBody,
 };
 
-const CustomDragHandle = () => <DragHandle variant="dots2x3" />;
-
-export const CustomDragHandleExample = Template.bind({});
-CustomDragHandleExample.args = {
+export const WithDragHandle = Template.bind({});
+WithDragHandle.args = {
   ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
-  dragHandleComponent: CustomDragHandle,
+  dragHandleComponent: DragIndicator,
+  listComponent: List,
+  listItemComponent: ListItem,
+  listItemBodyComponent: ListItemBody,
 };

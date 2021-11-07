@@ -1,6 +1,12 @@
-import { styled } from '@mui/styles';
+import styled from '@emotion/styled';
 import cn from 'classnames';
-import { FunctionComponent, HTMLProps, useCallback, useMemo } from 'react';
+import {
+  FunctionComponent,
+  HTMLProps,
+  ReactNode,
+  useCallback,
+  useMemo,
+} from 'react';
 
 import { DraggableList } from '../DraggableList/DraggableList';
 import { TransferListContextProvider } from './TransferListContext';
@@ -11,10 +17,8 @@ const classes = {
   container: `${PREFIX}-container`,
 };
 
-const StyledDiv = styled('div')(({ theme }) => ({
-  [`&.${classes.container}`]: {
-    margin: theme.spacing(1),
-  },
+const Container = styled('div')(() => ({
+  [`&.${classes.container}`]: {},
 }));
 
 export interface ReorderableListProps
@@ -22,6 +26,8 @@ export interface ReorderableListProps
   ids: string[];
   onChange: (ids: string[]) => void;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
+  listComponent?: FunctionComponent<{ children?: ReactNode }>;
+  listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
   listItemBodyComponent?: FunctionComponent<{ id: string }>;
 }
 
@@ -30,6 +36,8 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
   onChange,
   className,
   dragHandleComponent,
+  listComponent,
+  listItemComponent,
   listItemBodyComponent,
 }) => {
   const handleChange = useCallback(
@@ -42,17 +50,22 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
   const listIds = useMemo(() => ({ droppable: ids }), [ids]);
 
   return (
-    <StyledDiv className={cn(classes.container, className)}>
+    <Container className={cn(classes.container, className)}>
       <TransferListContextProvider listIds={listIds} onChange={handleChange}>
         {({ handleDragEnd }) => (
           <DraggableList
             droppableId="droppable"
             ids={listIds['droppable']}
             onDragEnd={handleDragEnd}
-            {...{ dragHandleComponent, listItemBodyComponent }}
+            {...{
+              dragHandleComponent,
+              listComponent,
+              listItemComponent,
+              listItemBodyComponent,
+            }}
           />
         )}
       </TransferListContextProvider>
-    </StyledDiv>
+    </Container>
   );
 };
