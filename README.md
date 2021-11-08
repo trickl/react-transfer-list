@@ -6,10 +6,15 @@
 
 A customizable Transfer List supporting drag and drop.
 
+## Example
+
+
 ## Install
 ```bash
 npm i react-transfer-list
+
+## Features
 ```
 
-## Usage and Demo
+## Documentation and Interactive Demo
 [Visit The Storybook Page](https://master--617ed0e7e88637004aa2ac53.chromatic.com/?path=/story/snowfox-controls-uncontrolledtransferlist--three-way-transfer-list)
