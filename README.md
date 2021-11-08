@@ -6,8 +6,8 @@
 
 A customizable Transfer List supporting drag and drop.
 
-## Example
-
+## Example Visualisation (not interactive)
+![Transfer List Example Gif](https://github.com/trickl/react-transfer-list/blob/master/gifs/TransferListExample.gif)
 
 ## Install
 ```bash
