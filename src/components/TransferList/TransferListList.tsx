@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
+import { DraggableListItemBodyProps } from 'components/DraggableList/DraggableListItem';
 import { FunctionComponent, HTMLProps, ReactNode, useContext } from 'react';
 
 import { DraggableList } from '../DraggableList/DraggableList';
@@ -36,7 +37,7 @@ export interface TransferListListProps
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
   listComponent?: FunctionComponent<{ children?: ReactNode }>;
   listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemBodyComponent?: FunctionComponent<{ id: string }>;
+  listItemBodyComponent?: FunctionComponent<DraggableListItemBodyProps>;
 }
 
 export const TransferListList: FunctionComponent<TransferListListProps> = ({

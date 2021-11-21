@@ -3,12 +3,16 @@ import cn from 'classnames';
 import { FunctionComponent, ReactNode } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
+export interface DraggableListItemBodyProps {
+  id: string;
+}
+
 export interface DraggableItemProps {
   id: string;
   index: number;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
   listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemBodyComponent?: FunctionComponent<{ id: string }>;
+  listItemBodyComponent?: FunctionComponent<DraggableListItemBodyProps>;
 }
 
 const PREFIX = 'DraggableListItem';
@@ -32,7 +36,7 @@ const StyledListItemContainer = styled.div(() => ({
   },
 }));
 
-const DefaultListItemBody = ({ id }: { id: string }) => {
+const DefaultListItemBody = ({ id }: DraggableListItemBodyProps) => {
   return <span>{id}</span>;
 };
 

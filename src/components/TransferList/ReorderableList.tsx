@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
+import { DraggableListItemBodyProps } from 'index';
 import {
   FunctionComponent,
   HTMLProps,
@@ -28,7 +29,7 @@ export interface ReorderableListProps
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
   listComponent?: FunctionComponent<{ children?: ReactNode }>;
   listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemBodyComponent?: FunctionComponent<{ id: string }>;
+  listItemBodyComponent?: FunctionComponent<DraggableListItemBodyProps>;
 }
 
 export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
