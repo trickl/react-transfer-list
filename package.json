@@ -1,6 +1,6 @@
 {
   "name": "react-transfer-list",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A Material UI based Transfer List supporting drag and drop",
   "repository": "https://github.com/trickl/react-transfer-list",
   "author": {
@@ -106,7 +106,7 @@
     ]
   },
   "scripts": {
-    "prepare": "rimraf dist",
+    "prepare": "rimraf dist && npm run build",
     "build": "rollup -c",
     "test": "jest",
     "lint": "npm run eslint",
