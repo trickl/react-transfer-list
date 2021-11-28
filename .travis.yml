@@ -9,6 +9,9 @@ jobs:
    - name: 'Publish to Chromatic'
      script: npx chromatic --project-token=${CHROMATIC_PROJECT_TOKEN} --auto-accept-changes
 
+before_deploy:
+  - npm run prepare
+  - npm run build
 deploy:
   provider: npm
   email: writetotimgee@gmail.com

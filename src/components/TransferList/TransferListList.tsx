@@ -31,7 +31,7 @@ const StyledDraggableList = styled(DraggableList)(({ theme }) => ({
 }));
 
 export interface TransferListListProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'as'> {
+  extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'as' | 'placeholder'> {
   id: string;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
   listComponent?: FunctionComponent<{ children?: ReactNode }>;

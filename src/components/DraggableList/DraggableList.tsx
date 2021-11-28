@@ -14,7 +14,7 @@ const classes = {
 };
 
 export interface DraggableListProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd'> {
+  extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'placeholder'> {
   ids: string[];
   onDragEnd: OnDragEndResponder;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
