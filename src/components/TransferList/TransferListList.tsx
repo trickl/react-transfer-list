@@ -15,7 +15,6 @@ const classes = {
 
 const Container = styled.div(() => ({
   [`&.${classes.container}`]: {
-    minWidth: 100,
     height: '100%',
     display: 'flex',
     flexDirection: 'column',

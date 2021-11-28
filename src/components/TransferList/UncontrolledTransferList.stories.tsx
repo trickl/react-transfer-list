@@ -38,7 +38,7 @@ const ListItemBody = ({ id }: { id: string }) => (
 );
 
 const MaterialList = ({ children }: { children?: ReactNode }) => (
-  <Paper sx={{ height: '100%', minHeight: '200px', margin: '10px' }}>
+  <Paper sx={{ height: '100%', minHeight: '100px', margin: '10px' }}>
     <List>{children}</List>
   </Paper>
 );

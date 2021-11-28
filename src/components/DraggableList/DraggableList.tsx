@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { FunctionComponent, HTMLProps, ReactNode } from 'react';
 import { Droppable, OnDragEndResponder } from 'react-beautiful-dnd';
 
+import { DefaultPlaceholder } from './DefaultPlaceholder';
 import { DraggableListItem } from './DraggableListItem';
 
 const PREFIX = 'DraggableList';
@@ -20,6 +21,7 @@ export interface DraggableListProps
   listComponent?: FunctionComponent<{ children?: ReactNode }>;
   listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
   listItemBodyComponent?: FunctionComponent<{ id: string }>;
+  placeholder?: FunctionComponent<Record<string, never>>;
   droppableId?: string;
 }
 
@@ -27,9 +29,11 @@ const StyledListContainer = styled.div(() => ({
   [`&.${classes.draggingOver}`]: {},
   [`&.${classes.list}`]: {
     height: '100%',
-    minWidth: '100px',
-    minHeight: '100px',
   },
+}));
+
+const StyledList = styled('ul')(() => ({
+  paddingRight: '40px',
 }));
 
 export const DraggableList: FunctionComponent<DraggableListProps> = ({
@@ -37,9 +41,10 @@ export const DraggableList: FunctionComponent<DraggableListProps> = ({
   onDragEnd,
   droppableId = 'droppable',
   dragHandleComponent,
-  listComponent: ListComponent = 'ul',
+  listComponent: ListComponent = StyledList,
   listItemComponent,
   listItemBodyComponent,
+  placeholder: Placeholder = DefaultPlaceholder,
   ...otherProps
 }) => {
   return (
@@ -57,6 +62,7 @@ export const DraggableList: FunctionComponent<DraggableListProps> = ({
             )}
           >
             <ListComponent>
+              {ids.length == 0 && <Placeholder />}
               {ids.map((id, index) => (
                 <DraggableListItem
                   index={index}

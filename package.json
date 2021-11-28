@@ -1,6 +1,6 @@
 {
   "name": "react-transfer-list",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Material UI based Transfer List supporting drag and drop",
   "repository": "https://github.com/trickl/react-transfer-list",
   "author": {
@@ -68,7 +68,6 @@
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-tsc": "^2.0.0",
     "husky": "^7.0.4",
-    "install-peers-cli": "^2.2.0",
     "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "@mui/icons-material": "^5.0.5",
@@ -107,6 +106,7 @@
     ]
   },
   "scripts": {
+    "prepare": "rimraf dist",
     "build": "rollup -c",
     "test": "jest",
     "lint": "npm run eslint",

@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
-import { DraggableListItemBodyProps } from 'index';
 import {
   FunctionComponent,
   HTMLProps,
@@ -10,6 +9,7 @@ import {
 } from 'react';
 
 import { DraggableList } from '../DraggableList/DraggableList';
+import { DraggableListItemBodyProps } from '../DraggableList/DraggableListItem';
 import { TransferListContextProvider } from './TransferListContext';
 
 const PREFIX = 'ReorderableList';
