@@ -19,91 +19,92 @@ const TransferListContext = React.createContext<TransferListState>({
   listIds: {},
 });
 
-const TransferListContextProvider: React.FunctionComponent<TransferListProps> =
-  ({ listIds, children, onChange }) => {
-    const handleDropSameList = useCallback(
-      ({ source, destination }: DropResult) => {
-        const ids = listIds[source.droppableId];
+const TransferListContextProvider: React.FunctionComponent<
+  TransferListProps
+> = ({ listIds, children, onChange }) => {
+  const handleDropSameList = useCallback(
+    ({ source, destination }: DropResult) => {
+      const ids = listIds[source.droppableId];
 
-        if (ids == null || destination == null) {
-          return;
-        }
+      if (ids == null || destination == null) {
+        return;
+      }
 
-        const updatedItems = Array.from(ids);
+      const updatedItems = Array.from(ids);
 
-        const [removed] = updatedItems.splice(source.index, 1);
-        if (removed) {
-          updatedItems.splice(destination.index, 0, removed);
-        }
+      const [removed] = updatedItems.splice(source.index, 1);
+      if (removed) {
+        updatedItems.splice(destination.index, 0, removed);
+      }
 
-        onChange(source.droppableId, updatedItems);
-      },
-      [listIds, onChange]
-    );
+      onChange(source.droppableId, updatedItems);
+    },
+    [listIds, onChange]
+  );
 
-    const handleDropDifferentList = useCallback(
-      ({ source, destination }: DropResult) => {
-        const sourceIds = listIds[source.droppableId];
-        if (sourceIds == null || destination == null) {
-          return;
-        }
+  const handleDropDifferentList = useCallback(
+    ({ source, destination }: DropResult) => {
+      const sourceIds = listIds[source.droppableId];
+      if (sourceIds == null || destination == null) {
+        return;
+      }
 
-        const destinationIds = listIds[destination.droppableId];
+      const destinationIds = listIds[destination.droppableId];
 
-        const updatedSourceItems = Array.from(sourceIds);
-        const updatedDestinationItems = Array.from(destinationIds ?? []);
+      const updatedSourceItems = Array.from(sourceIds);
+      const updatedDestinationItems = Array.from(destinationIds ?? []);
 
-        const [removed] = updatedSourceItems.splice(source.index, 1);
-        if (removed) {
-          updatedDestinationItems.splice(destination.index, 0, removed);
-        }
+      const [removed] = updatedSourceItems.splice(source.index, 1);
+      if (removed) {
+        updatedDestinationItems.splice(destination.index, 0, removed);
+      }
 
-        onChange(source.droppableId, updatedSourceItems);
-        onChange(destination.droppableId, updatedDestinationItems);
-      },
-      [listIds, onChange]
-    );
+      onChange(source.droppableId, updatedSourceItems);
+      onChange(destination.droppableId, updatedDestinationItems);
+    },
+    [listIds, onChange]
+  );
 
-    const handleDragEnd = useCallback(
-      (result: DropResult) => {
-        const { source, destination } = result;
+  const handleDragEnd = useCallback(
+    (result: DropResult) => {
+      const { source, destination } = result;
 
-        // dropped outside the list
-        if (!destination) {
-          return;
-        }
+      // dropped outside the list
+      if (!destination) {
+        return;
+      }
 
-        if (source.droppableId === destination.droppableId) {
-          handleDropSameList(result);
-        } else {
-          handleDropDifferentList(result);
-        }
-      },
-      [handleDropSameList, handleDropDifferentList]
-    );
+      if (source.droppableId === destination.droppableId) {
+        handleDropSameList(result);
+      } else {
+        handleDropDifferentList(result);
+      }
+    },
+    [handleDropSameList, handleDropDifferentList]
+  );
 
-    const handlers = useMemo(
-      () => ({
-        handleDragEnd,
-      }),
-      [handleDragEnd]
-    );
+  const handlers = useMemo(
+    () => ({
+      handleDragEnd,
+    }),
+    [handleDragEnd]
+  );
 
-    const state = useMemo(
-      () => ({
-        ...handlers,
-        listIds,
-      }),
-      [handlers, listIds]
-    );
+  const state = useMemo(
+    () => ({
+      ...handlers,
+      listIds,
+    }),
+    [handlers, listIds]
+  );
 
-    return (
-      <TransferListContext.Provider value={state}>
-        <DragDropContext onDragEnd={handleDragEnd}>
-          {typeof children === 'function' ? children(handlers) : children}
-        </DragDropContext>
-      </TransferListContext.Provider>
-    );
-  };
+  return (
+    <TransferListContext.Provider value={state}>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        {typeof children === 'function' ? children(handlers) : children}
+      </DragDropContext>
+    </TransferListContext.Provider>
+  );
+};
 
 export { TransferListContext, TransferListContextProvider };

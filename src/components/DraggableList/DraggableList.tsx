@@ -62,7 +62,7 @@ export const DraggableList: FunctionComponent<DraggableListProps> = ({
             )}
           >
             <ListComponent>
-              {ids.length == 0 && <Placeholder />}
+              {ids.length === 0 && <Placeholder />}
               {ids.map((id, index) => (
                 <DraggableListItem
                   index={index}

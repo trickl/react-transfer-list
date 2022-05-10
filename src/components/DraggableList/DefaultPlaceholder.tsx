@@ -11,7 +11,8 @@ const Container = styled('div')(() => ({
   padding: '10px',
 }));
 
-export const DefaultPlaceholder: FunctionComponent<Record<string, never>> =
-  () => {
-    return <Container>No items selected</Container>;
-  };
+export const DefaultPlaceholder: FunctionComponent<
+  Record<string, never>
+> = () => {
+  return <Container>No items selected</Container>;
+};
