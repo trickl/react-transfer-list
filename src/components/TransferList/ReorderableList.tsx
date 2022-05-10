@@ -42,7 +42,7 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
   listItemBodyComponent,
 }) => {
   const handleChange = useCallback(
-    (_, ids) => {
+    (_: string, ids: string[]) => {
       onChange(ids);
     },
     [onChange]
