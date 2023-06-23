@@ -8,9 +8,13 @@ export interface TransferListState extends TransferListHandlers {
   listIds: { [droppableId: string]: string[] };
 }
 
+export interface TransferListIds {
+  [droppableId: string]: string[];
+}
+
 export interface TransferListProps {
   children?: ((handlers: TransferListHandlers) => ReactNode) | ReactNode;
-  listIds: { [droppableId: string]: string[] };
+  listIds: TransferListIds;
   onChange: (droppableId: string, ids: string[]) => void;
 }
 
