@@ -5,17 +5,17 @@ export interface TransferListHandlers {
   handleDragEnd: (result: DropResult) => void;
 }
 export interface TransferListState extends TransferListHandlers {
-  listIds: { [droppableId: string]: string[] };
+  listIds: { [listId: string]: string[] };
 }
 
 export interface TransferListIds {
-  [droppableId: string]: string[];
+  [listId: string]: string[];
 }
 
 export interface TransferListProps {
   children?: ((handlers: TransferListHandlers) => ReactNode) | ReactNode;
   listIds: TransferListIds;
-  onChange: (droppableId: string, ids: string[]) => void;
+  onChange: (listId: string, ids: string[]) => void;
 }
 
 const TransferListContext = React.createContext<TransferListState>({

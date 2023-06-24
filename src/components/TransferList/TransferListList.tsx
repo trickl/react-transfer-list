@@ -1,10 +1,25 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
-import { DraggableListItemBodyProps } from 'components/DraggableList/DraggableListItem';
 import { FunctionComponent, HTMLProps, ReactNode, useContext } from 'react';
 
 import { DraggableList } from '../DraggableList/DraggableList';
 import { TransferListContext } from './TransferListContext';
+
+export interface ListComponentProps {
+  id: string;
+  children?: ReactNode;
+}
+
+export interface ListItemComponentProps {
+  listId: string;
+  id: string;
+  children?: ReactNode;
+}
+
+export interface ListItemBodyComponentProps {
+  listId: string;
+  id: string;
+}
 
 const PREFIX = 'TransferListList';
 
@@ -24,7 +39,7 @@ const Container = styled.div(() => ({
   },
 }));
 
-const StyledDraggableList = styled(DraggableList)(({ theme }) => ({
+const StyledDraggableList = styled(DraggableList)(() => ({
   [`&.${classes.list}`]: {
     height: '100%',
   },
@@ -34,9 +49,9 @@ export interface TransferListListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'as' | 'placeholder'> {
   id: string;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
-  listComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemBodyComponent?: FunctionComponent<DraggableListItemBodyProps>;
+  listComponent?: FunctionComponent<ListComponentProps>;
+  listItemComponent?: FunctionComponent<ListItemComponentProps>;
+  listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
 }
 
 export const TransferListList: FunctionComponent<TransferListListProps> = ({
@@ -50,7 +65,7 @@ export const TransferListList: FunctionComponent<TransferListListProps> = ({
     <Container className={cn(classes.container, className)}>
       <StyledDraggableList
         className={classes.list}
-        droppableId={id}
+        listId={id}
         ids={listIds[id] ?? []}
         onDragEnd={handleDragEnd}
         {...otherProps}

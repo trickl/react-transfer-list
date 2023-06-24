@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
-import { FunctionComponent, HTMLProps, ReactNode } from 'react';
+import {
+  ListComponentProps,
+  ListItemBodyComponentProps,
+  ListItemComponentProps,
+} from 'components/TransferList/TransferListList';
+import { FunctionComponent, HTMLProps } from 'react';
 import { Droppable, OnDragEndResponder } from 'react-beautiful-dnd';
 
 import { DefaultPlaceholder } from './DefaultPlaceholder';
@@ -18,11 +23,11 @@ export interface DraggableListProps
   ids: string[];
   onDragEnd: OnDragEndResponder;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
-  listComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemBodyComponent?: FunctionComponent<{ id: string }>;
+  listComponent?: FunctionComponent<ListComponentProps>;
+  listItemComponent?: FunctionComponent<ListItemComponentProps>;
+  listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
   placeholder?: FunctionComponent<Record<string, never>>;
-  droppableId?: string;
+  listId?: string;
 }
 
 const StyledListContainer = styled.div(() => ({
@@ -32,23 +37,28 @@ const StyledListContainer = styled.div(() => ({
   },
 }));
 
-const StyledList = styled('ul')(() => ({
+const DefaultListComponent: FunctionComponent<ListComponentProps> = ({
+  id,
+  children,
+}) => <ul>{children} </ul>;
+
+const StyledDefaultListComponent = styled(DefaultListComponent)(() => ({
   paddingRight: '40px',
 }));
 
 export const DraggableList: FunctionComponent<DraggableListProps> = ({
   ids,
   onDragEnd,
-  droppableId = 'droppable',
+  listId = 'droppable',
   dragHandleComponent,
-  listComponent: ListComponent = StyledList,
+  listComponent: ListComponent = StyledDefaultListComponent,
   listItemComponent,
   listItemBodyComponent,
   placeholder: Placeholder = DefaultPlaceholder,
   ...otherProps
 }) => {
   return (
-    <Droppable droppableId={droppableId}>
+    <Droppable droppableId={listId}>
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
@@ -61,13 +71,14 @@ export const DraggableList: FunctionComponent<DraggableListProps> = ({
               snapshot.isDraggingOver ? classes.draggingOver : undefined
             )}
           >
-            <ListComponent>
+            <ListComponent id={listId}>
               {ids.length === 0 && <Placeholder />}
               {ids.map((id, index) => (
                 <DraggableListItem
                   index={index}
                   key={id}
                   id={id}
+                  listId={listId}
                   {...{
                     dragHandleComponent,
                     listItemComponent,

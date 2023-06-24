@@ -1,18 +1,19 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
-import { FunctionComponent, ReactNode } from 'react';
+import {
+  ListItemBodyComponentProps,
+  ListItemComponentProps,
+} from 'components/TransferList/TransferListList';
+import { FunctionComponent } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-
-export interface DraggableListItemBodyProps {
-  id: string;
-}
 
 export interface DraggableItemProps {
   id: string;
+  listId: string;
   index: number;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
-  listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemBodyComponent?: FunctionComponent<DraggableListItemBodyProps>;
+  listItemComponent?: FunctionComponent<ListItemComponentProps>;
+  listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
 }
 
 const PREFIX = 'DraggableListItem';
@@ -36,15 +37,24 @@ const StyledListItemContainer = styled.div(() => ({
   },
 }));
 
-const DefaultListItemBody = ({ id }: DraggableListItemBodyProps) => {
-  return <span>{id}</span>;
+const DefaultListItemComponent = ({
+  listId,
+  id,
+  children,
+}: ListItemComponentProps) => {
+  return <li key={id}>{children}</li>;
+};
+
+const DefaultListItemBody = ({ id }: ListItemBodyComponentProps) => {
+  return <span key={id}>{id}</span>;
 };
 
 export const DraggableListItem: FunctionComponent<DraggableItemProps> = ({
   index,
   id,
+  listId,
   dragHandleComponent: DragHandleComponent,
-  listItemComponent: ListItemComponent = 'li',
+  listItemComponent: ListItemComponent = DefaultListItemComponent,
   listItemBodyComponent: ListItemBodyComponent = DefaultListItemBody,
 }) => {
   return (
@@ -61,13 +71,13 @@ export const DraggableListItem: FunctionComponent<DraggableItemProps> = ({
             snapshot.isDragging ? classes.dragging : undefined
           )}
         >
-          <ListItemComponent>
+          <ListItemComponent id={id} listId={listId}>
             {DragHandleComponent && (
               <div className={classes.dragHandle} {...provided.dragHandleProps}>
                 <DragHandleComponent />
               </div>
             )}
-            <ListItemBodyComponent id={id} />
+            <ListItemBodyComponent id={id} listId={listId} />
           </ListItemComponent>
         </StyledListItemContainer>
       )}

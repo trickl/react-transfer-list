@@ -44,7 +44,7 @@ export const MaterialUIExample = Template.bind({});
 MaterialUIExample.args = {
   ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
   listComponent: List,
-  listItemComponent: ListItem,
+  listItemComponent: ({ children }) => <ListItem>{children}</ListItem>,
   listItemBodyComponent: ListItemBody,
 };
 

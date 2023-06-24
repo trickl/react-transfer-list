@@ -45,7 +45,7 @@ const MaterialList = ({ children }: { children?: ReactNode }) => (
 
 const listProps: Partial<TransferListListProps> = {
   listComponent: MaterialList,
-  listItemComponent: ListItem,
+  listItemComponent: ({ children }) => <ListItem>{children}</ListItem>,
   listItemBodyComponent: ListItemBody,
 };
 

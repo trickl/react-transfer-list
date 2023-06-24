@@ -1,16 +1,14 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
-import {
-  FunctionComponent,
-  HTMLProps,
-  ReactNode,
-  useCallback,
-  useMemo,
-} from 'react';
+import { FunctionComponent, HTMLProps, useCallback, useMemo } from 'react';
 
 import { DraggableList } from '../DraggableList/DraggableList';
-import { DraggableListItemBodyProps } from '../DraggableList/DraggableListItem';
 import { TransferListContextProvider } from './TransferListContext';
+import {
+  ListComponentProps,
+  ListItemBodyComponentProps,
+  ListItemComponentProps,
+} from './TransferListList';
 
 const PREFIX = 'ReorderableList';
 
@@ -27,9 +25,9 @@ export interface ReorderableListProps
   ids: string[];
   onChange: (ids: string[]) => void;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
-  listComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemComponent?: FunctionComponent<{ children?: ReactNode }>;
-  listItemBodyComponent?: FunctionComponent<DraggableListItemBodyProps>;
+  listComponent?: FunctionComponent<ListComponentProps>;
+  listItemComponent?: FunctionComponent<ListItemComponentProps>;
+  listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
 }
 
 export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
@@ -55,7 +53,7 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
       <TransferListContextProvider listIds={listIds} onChange={handleChange}>
         {({ handleDragEnd }) => (
           <DraggableList
-            droppableId="droppable"
+            listId="droppable"
             ids={listIds['droppable']}
             onDragEnd={handleDragEnd}
             {...{

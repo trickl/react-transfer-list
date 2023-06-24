@@ -19,8 +19,8 @@ const Container = styled('div')(() => ({
 
 export interface TransferListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
-  ids: { [droppableId: string]: string[] };
-  onChange?: (droppableId: string, ids: string[]) => void;
+  ids: { [listId: string]: string[] };
+  onChange?: (listId: string, ids: string[]) => void;
 }
 
 export const TransferList: FunctionComponent<TransferListProps> = ({
@@ -30,8 +30,8 @@ export const TransferList: FunctionComponent<TransferListProps> = ({
   children,
 }) => {
   const handleChange = useCallback(
-    (droppableId: string, ids: string[]) => {
-      onChange?.(droppableId, ids);
+    (listId: string, ids: string[]) => {
+      onChange?.(listId, ids);
     },
     [onChange]
   );

@@ -9,18 +9,18 @@ enum IdsActionKind {
 
 type IdsAction = {
   type: IdsActionKind;
-  payload: { droppableId: string; ids: string[] };
+  payload: { listId: string; ids: string[] };
 };
 
 const idsReducer = (
-  state: { [droppableId: string]: string[] },
+  state: { [listId: string]: string[] },
   action: IdsAction
-): { [droppableId: string]: string[] } => {
+): { [listId: string]: string[] } => {
   const { type, payload } = action;
   switch (type) {
     case IdsActionKind.UpdateIds:
       const newState = clone(state);
-      newState[payload.droppableId] = payload.ids;
+      newState[payload.listId] = payload.ids;
       return newState;
     default:
       return state;
@@ -35,15 +35,15 @@ export const UncontrolledTransferList: FunctionComponent<TransferListProps> = ({
   const [ids, dispatch] = useReducer(idsReducer, initialIds);
 
   const handleChange = useCallback(
-    (droppableId: string, ids: string[]) => {
+    (listId: string, ids: string[]) => {
       dispatch({
         type: IdsActionKind.UpdateIds,
         payload: {
-          droppableId,
+          listId,
           ids,
         },
       });
-      onChange?.(droppableId, ids);
+      onChange?.(listId, ids);
     },
     [onChange]
   );
