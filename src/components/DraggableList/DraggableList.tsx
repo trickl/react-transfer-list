@@ -6,7 +6,12 @@ import {
   ListItemComponentProps,
 } from 'components/TransferList/TransferListList';
 import { FunctionComponent, HTMLProps } from 'react';
-import { Droppable, OnDragEndResponder } from 'react-beautiful-dnd';
+import {
+  DraggableProps,
+  Droppable,
+  DroppableProps,
+  OnDragEndResponder,
+} from 'react-beautiful-dnd';
 
 import { DefaultPlaceholder } from './DefaultPlaceholder';
 import { DraggableListItem } from './DraggableListItem';
@@ -28,6 +33,7 @@ export interface DraggableListProps
   listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
   placeholder?: FunctionComponent<Record<string, never>>;
   listId?: string;
+  options?: { draggable?: DraggableProps; droppable?: DroppableProps };
 }
 
 const StyledListContainer = styled.div(() => ({
@@ -55,10 +61,11 @@ export const DraggableList: FunctionComponent<DraggableListProps> = ({
   listItemComponent,
   listItemBodyComponent,
   placeholder: Placeholder = DefaultPlaceholder,
+  options = {},
   ...otherProps
 }) => {
   return (
-    <Droppable droppableId={listId}>
+    <Droppable {...options.droppable} droppableId={listId}>
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
@@ -75,6 +82,7 @@ export const DraggableList: FunctionComponent<DraggableListProps> = ({
               {ids.length === 0 && <Placeholder />}
               {ids.map((id, index) => (
                 <DraggableListItem
+                  {...options.draggable}
                   index={index}
                   key={id}
                   id={id}

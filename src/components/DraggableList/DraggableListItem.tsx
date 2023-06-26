@@ -57,9 +57,10 @@ export const DraggableListItem: FunctionComponent<DraggableItemProps> = ({
   dragHandleComponent: DragHandleComponent,
   listItemComponent: ListItemComponent = DefaultListItemComponent,
   listItemBodyComponent: ListItemBodyComponent = DefaultListItemBody,
+  ...otherProps
 }) => {
   return (
-    <Draggable key={id} draggableId={id} index={index}>
+    <Draggable key={id} draggableId={id} index={index} {...otherProps}>
       {(provided, snapshot) => (
         <StyledListItemContainer
           ref={provided.innerRef}

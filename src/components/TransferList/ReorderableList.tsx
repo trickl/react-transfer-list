@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
 import { FunctionComponent, HTMLProps, useCallback, useMemo } from 'react';
+import { DraggableProps, DroppableProps } from 'react-beautiful-dnd';
 
 import { DraggableList } from '../DraggableList/DraggableList';
 import { TransferListContextProvider } from './TransferListContext';
@@ -28,6 +29,7 @@ export interface ReorderableListProps
   listComponent?: FunctionComponent<ListComponentProps>;
   listItemComponent?: FunctionComponent<ListItemComponentProps>;
   listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
+  options?: { draggable?: DraggableProps; droppable?: DroppableProps };
 }
 
 export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
@@ -38,6 +40,7 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
   listComponent,
   listItemComponent,
   listItemBodyComponent,
+  options,
 }) => {
   const handleChange = useCallback(
     (_: string, ids: string[]) => {
@@ -62,6 +65,7 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
               listItemComponent,
               listItemBodyComponent,
             }}
+            options={options}
           />
         )}
       </TransferListContextProvider>
