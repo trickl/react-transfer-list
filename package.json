@@ -1,6 +1,6 @@
 {
   "name": "react-transfer-list",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "type": "module",
   "description": "A Material UI based Transfer List supporting drag and drop",
   "repository": "https://github.com/trickl/react-transfer-list",
@@ -103,7 +103,6 @@
     "@emotion/styled": "^11.11.0",
     "classnames": "^2.3.2",
     "lodash.clone": "^4.5.0",
-    "react-beautiful-dnd": "^13.1.1",
-    "react-draggable": "^4.4.5"
+    "react-beautiful-dnd": "^13.1.1"
   }
 }
