@@ -5,9 +5,10 @@ import {
   ListItemComponentProps,
 } from 'components/TransferList/TransferListList';
 import { FunctionComponent } from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable, DraggableProps } from 'react-beautiful-dnd';
 
-export interface DraggableItemProps {
+export interface DraggableItemProps
+  extends Omit<DraggableProps, 'draggableId' | 'children'> {
   id: string;
   listId: string;
   index: number;
