@@ -23,6 +23,11 @@ const classes = {
   draggingOver: `${PREFIX}-dragging-over`,
 };
 
+export interface DraggableListOptions {
+  draggable?: Omit<DraggableProps, 'draggableId' | 'index' | 'children'>;
+  droppable?: Omit<DroppableProps, 'droppableId' | 'children'>;
+}
+
 export interface DraggableListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'placeholder'> {
   ids: string[];
@@ -33,7 +38,7 @@ export interface DraggableListProps
   listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
   placeholder?: FunctionComponent<Record<string, never>>;
   listId?: string;
-  options?: { draggable?: DraggableProps; droppable?: DroppableProps };
+  options?: DraggableListOptions;
 }
 
 const StyledListContainer = styled.div(() => ({

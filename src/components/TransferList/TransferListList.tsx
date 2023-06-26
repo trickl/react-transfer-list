@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
 import { FunctionComponent, HTMLProps, ReactNode, useContext } from 'react';
-import { DraggableProps, DroppableProps } from 'react-beautiful-dnd';
 
-import { DraggableList } from '../DraggableList/DraggableList';
+import {
+  DraggableList,
+  DraggableListOptions,
+} from '../DraggableList/DraggableList';
 import { TransferListContext } from './TransferListContext';
 
 export interface ListComponentProps {
@@ -53,7 +55,7 @@ export interface TransferListListProps
   listComponent?: FunctionComponent<ListComponentProps>;
   listItemComponent?: FunctionComponent<ListItemComponentProps>;
   listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
-  options?: { draggable?: DraggableProps; droppable?: DroppableProps };
+  options?: DraggableListOptions;
 }
 
 export const TransferListList: FunctionComponent<TransferListListProps> = ({

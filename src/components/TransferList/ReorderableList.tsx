@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
 import { FunctionComponent, HTMLProps, useCallback, useMemo } from 'react';
-import { DraggableProps, DroppableProps } from 'react-beautiful-dnd';
 
-import { DraggableList } from '../DraggableList/DraggableList';
+import {
+  DraggableList,
+  DraggableListOptions,
+} from '../DraggableList/DraggableList';
 import { TransferListContextProvider } from './TransferListContext';
 import {
   ListComponentProps,
@@ -29,7 +31,7 @@ export interface ReorderableListProps
   listComponent?: FunctionComponent<ListComponentProps>;
   listItemComponent?: FunctionComponent<ListItemComponentProps>;
   listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
-  options?: { draggable?: DraggableProps; droppable?: DroppableProps };
+  options?: DraggableListOptions;
 }
 
 export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
