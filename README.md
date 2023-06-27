@@ -31,4 +31,5 @@ npm i react-transfer-list
 * Only requires [emotion](https://emotion.sh/docs/introduction) and [React](https://reactjs.org/)
 
 ## Documentation and Interactive Demo
-[Visit The Storybook Page](https://master--617ed0e7e88637004aa2ac53.chromatic.com/?path=/story/snowfox-controls-uncontrolledtransferlist--three-way-transfer-list)
+[Visit The Storybook Page](
+https://master--617ed0e7e88637004aa2ac53.chromatic.com/?path=/story/transfer-list--three-way-example)
