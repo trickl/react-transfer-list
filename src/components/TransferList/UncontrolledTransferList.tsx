@@ -1,51 +1,20 @@
-import clone from 'lodash/clone';
-import { FunctionComponent, useCallback, useReducer } from 'react';
+import { FunctionComponent, useCallback, useState } from 'react';
 
 import { TransferList, TransferListProps } from './TransferList';
-
-enum IdsActionKind {
-  UpdateIds = 'UPDATE_IDS',
-}
-
-type IdsAction = {
-  type: IdsActionKind;
-  payload: { listId: string; ids: string[] };
-};
-
-const idsReducer = (
-  state: { [listId: string]: string[] },
-  action: IdsAction
-): { [listId: string]: string[] } => {
-  const { type, payload } = action;
-  switch (type) {
-    case IdsActionKind.UpdateIds:
-      const newState = clone(state);
-      newState[payload.listId] = payload.ids;
-      return newState;
-    default:
-      return state;
-  }
-};
 
 export const UncontrolledTransferList: FunctionComponent<TransferListProps> = ({
   ids: initialIds,
   onChange,
   ...otherProps
 }) => {
-  const [ids, dispatch] = useReducer(idsReducer, initialIds);
+  const [ids, setIds] = useState(initialIds);
 
-  const handleChange = useCallback(
-    (listId: string, ids: string[]) => {
-      dispatch({
-        type: IdsActionKind.UpdateIds,
-        payload: {
-          listId,
-          ids,
-        },
-      });
-      onChange?.(listId, ids);
-    },
-    [onChange]
-  );
+  const handleChange = useCallback((listId: string, ids: string[]) => {
+    setIds((orig) => {
+      orig[listId] = [...ids];
+      return { ...orig };
+    });
+  }, []);
+
   return <TransferList ids={ids} onChange={handleChange} {...otherProps} />;
 };
