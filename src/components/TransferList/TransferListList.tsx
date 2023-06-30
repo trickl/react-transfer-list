@@ -50,20 +50,40 @@ const StyledDraggableList = styled(DraggableList)(() => ({
 
 export interface TransferListListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'as' | 'placeholder'> {
+  /** The id of the list. */
   id: string;
+
+  /** Specify a custom component to render a drag handle. */
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
+
+  /** Specify a custom component to render the list container.
+   * Defaults to a ol element
+   */
   listComponent?: FunctionComponent<ListComponentProps>;
+
+  /** Specify a custom component to render the list item container.
+   * Defaults to a li element
+   */
   listItemComponent?: FunctionComponent<ListItemComponentProps>;
+
+  /** Specify a custom component to render the body of each list item.
+   *  Defaults to a span element containing the id of the item.
+   */
   listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
+
+  /** Additional configuration options for drag and drop behaviour. */
   options?: DraggableListOptions;
 }
 
+/**
+ * A list holding items that can receive or send items to other lists.
+ */
 export const TransferListList: FunctionComponent<TransferListListProps> = ({
   id,
   className,
   options,
   ...otherProps
-}) => {
+}: TransferListListProps) => {
   const { handleDragEnd, listIds } = useContext(TransferListContext);
 
   return (

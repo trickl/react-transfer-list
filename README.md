@@ -30,6 +30,60 @@ npm i react-transfer-list
 * Highly Customizable
 * Only requires [emotion](https://emotion.sh/docs/introduction) and [React](https://reactjs.org/)
 
-## Documentation and Interactive Demo
+## Documentation 
+### Storybook
 [Visit The Storybook Page](
 https://master--617ed0e7e88637004aa2ac53.chromatic.com/?path=/story/transfer-list--three-way-example)
+
+###ReorderableList
+
+```<ReorderableList />``` is a single list of items whose order can be updated by drag and drop.
+
+<!-- props-table-start -->
+#### Properties
+
+| Property | PropType | Required | Default | Description |
+|----------|----------|----------|---------|-------------|
+| ids | ```string[]``` | yes |  | The ids of the items in the list. |
+| onChange | `` | yes |  | Called when a request to change the order of the items is made. |
+| dragHandleComponent | `` |  |  | Specify a custom component to render a drag handle. |
+| listComponent | `` |  |  | Specify a custom component to render the list container.<br>Defaults to a ol element |
+| listItemComponent | `` |  |  | Specify a custom component to render the list item container.<br>Defaults to a li element |
+| listItemBodyComponent | `` |  |  | Specify a custom component to render the body of each list item.<br> Defaults to a span element containing the id of the item. |
+| options | `` |  |  | Additional configuration options for drag and drop behaviour. |
+
+<!-- props-table-end -->
+
+
+###TransferList
+
+```<TransferList />``` is the top level component for holding lists that can exchange items.
+
+<!-- props-table-start -->
+#### Properties
+
+| Property | PropType | Required | Default | Description |
+|----------|----------|----------|---------|-------------|
+| ids | ```Record<string, string[]>``` | yes |  | The ids of the lists and the respective ids of each item in each list. |
+| onChange | `` |  |  | Called when a request to change the items in a list is made. |
+
+<!-- props-table-end -->
+
+
+###TransferListList
+
+```<TransferListList />``` are lists that can exchange items within a ```<TransferList />``` .
+
+<!-- props-table-start -->
+#### Properties
+
+| Property | PropType | Required | Default | Description |
+|----------|----------|----------|---------|-------------|
+| id | ```string``` | yes |  | The id of the list. |
+| dragHandleComponent | `` |  |  | Specify a custom component to render a drag handle. |
+| listComponent | `` |  |  | Specify a custom component to render the list container.<br>Defaults to a ol element |
+| listItemComponent | `` |  |  | Specify a custom component to render the list item container.<br>Defaults to a li element |
+| listItemBodyComponent | `` |  |  | Specify a custom component to render the body of each list item.<br> Defaults to a span element containing the id of the item. |
+| options | `` |  |  | Additional configuration options for drag and drop behaviour. |
+
+<!-- props-table-end -->

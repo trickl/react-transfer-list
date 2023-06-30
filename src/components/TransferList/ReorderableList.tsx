@@ -25,12 +25,31 @@ const Container = styled('div')(() => ({
 
 export interface ReorderableListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
+  /** The ids of the items in the list. */
   ids: string[];
+
+  /** Called when a request to change the order of the items is made. */
   onChange: (ids: string[]) => void;
+
+  /** Specify a custom component to render a drag handle. */
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
+
+  /** Specify a custom component to render the list container.
+   * Defaults to a ol element
+   */
   listComponent?: FunctionComponent<ListComponentProps>;
+
+  /** Specify a custom component to render the list item container.
+   * Defaults to a li element
+   */
   listItemComponent?: FunctionComponent<ListItemComponentProps>;
+
+  /** Specify a custom component to render the body of each list item.
+   *  Defaults to a span element containing the id of the item.
+   */
   listItemBodyComponent?: FunctionComponent<ListItemBodyComponentProps>;
+
+  /** Additional configuration options for drag and drop behaviour. */
   options?: DraggableListOptions;
 }
 
@@ -43,7 +62,7 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
   listItemComponent,
   listItemBodyComponent,
   options,
-}) => {
+}: ReorderableListProps) => {
   const handleChange = useCallback(
     (_: string, ids: string[]) => {
       onChange(ids);

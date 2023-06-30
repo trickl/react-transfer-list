@@ -19,16 +19,22 @@ const Container = styled('div')(() => ({
 
 export interface TransferListProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
+  /** The ids of the lists and the respective ids of each item in each list. */
   ids: { [listId: string]: string[] };
+
+  /** Called when a request to change the items in a list is made. */
   onChange?: (listId: string, ids: string[]) => void;
 }
 
+/**
+ * The `TransferList` component is a container for two or more lists of items that can be moved between lists.
+ */
 export const TransferList: FunctionComponent<TransferListProps> = ({
   ids,
   onChange,
   className,
   children,
-}) => {
+}: TransferListProps) => {
   const handleChange = useCallback(
     (listId: string, ids: string[]) => {
       onChange?.(listId, ids);

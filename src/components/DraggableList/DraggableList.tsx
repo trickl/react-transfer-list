@@ -51,7 +51,7 @@ const StyledListContainer = styled.div(() => ({
 const DefaultListComponent: FunctionComponent<ListComponentProps> = ({
   id,
   children,
-}) => <ul>{children} </ul>;
+}) => <ol>{children} </ol>;
 
 const StyledDefaultListComponent = styled(DefaultListComponent)(() => ({
   paddingRight: '40px',
