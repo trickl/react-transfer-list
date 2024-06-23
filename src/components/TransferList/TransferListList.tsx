@@ -31,7 +31,7 @@ const classes = {
   list: `${PREFIX}-list`,
 };
 
-const Container = styled.div(() => ({
+const Container = styled.div((theme) => ({
   [`&.${classes.container}`]: {
     height: '100%',
     display: 'flex',

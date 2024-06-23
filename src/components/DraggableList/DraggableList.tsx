@@ -1,10 +1,5 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
-import {
-  ListComponentProps,
-  ListItemBodyComponentProps,
-  ListItemComponentProps,
-} from 'components/TransferList/TransferListList';
 import { FunctionComponent, HTMLProps } from 'react';
 import {
   DraggableProps,
@@ -13,6 +8,11 @@ import {
   OnDragEndResponder,
 } from 'react-beautiful-dnd';
 
+import {
+  ListComponentProps,
+  ListItemBodyComponentProps,
+  ListItemComponentProps,
+} from '../../components/TransferList/TransferListList';
 import { DefaultPlaceholder } from './DefaultPlaceholder';
 import { DraggableListItem } from './DraggableListItem';
 

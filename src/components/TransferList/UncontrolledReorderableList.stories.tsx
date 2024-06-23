@@ -1,4 +1,4 @@
-import { DragIndicator } from '@mui/icons-material';
+import DragIndicator from '@mui/icons-material/DragIndicator';
 import InboxIcon from '@mui/icons-material/Inbox';
 import {
   Avatar,
@@ -7,24 +7,16 @@ import {
   ListItemAvatar,
   ListItemText,
 } from '@mui/material';
-import { Meta, Story } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react';
 
-import { ReorderableListProps } from './ReorderableList';
 import { UncontrolledReorderableList } from './UncontrolledReorderableList';
 
-export default {
-  title: 'Reorderable List',
+const meta = {
   component: UncontrolledReorderableList,
-} as Meta;
+} satisfies Meta<typeof UncontrolledReorderableList>;
 
-const Template: Story<ReorderableListProps> = (args) => (
-  <UncontrolledReorderableList {...args} />
-);
-
-export const UnstyledList = Template.bind({});
-UnstyledList.args = {
-  ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
-};
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const ListItemBody = ({ id }: { id: string }) => (
   <>
@@ -40,19 +32,30 @@ const ListItemBody = ({ id }: { id: string }) => (
   </>
 );
 
-export const MaterialUIExample = Template.bind({});
-MaterialUIExample.args = {
-  ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
-  listComponent: List,
-  listItemComponent: ({ children }) => <ListItem>{children}</ListItem>,
-  listItemBodyComponent: ListItemBody,
+export const UnstyledList: Story = {
+  render: (args) => <UncontrolledReorderableList {...args} />,
+  args: {
+    ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
+  },
 };
 
-export const WithDragHandle = Template.bind({});
-WithDragHandle.args = {
-  ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
-  dragHandleComponent: DragIndicator,
-  listComponent: List,
-  listItemComponent: ListItem,
-  listItemBodyComponent: ListItemBody,
+export const MaterialUIExample: Story = {
+  render: (args) => <UncontrolledReorderableList {...args} />,
+  args: {
+    ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
+    listComponent: List,
+    listItemComponent: ({ children }) => <ListItem>{children}</ListItem>,
+    listItemBodyComponent: ListItemBody,
+  },
+};
+
+export const WithDragHandle: Story = {
+  render: (args) => <UncontrolledReorderableList {...args} />,
+  args: {
+    ids: Array.from({ length: 10 }).map((_, i) => String(i + 1)),
+    dragHandleComponent: DragIndicator,
+    listComponent: List,
+    listItemComponent: ({ children }) => <ListItem>{children}</ListItem>,
+    listItemBodyComponent: ListItemBody,
+  },
 };

@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
 import cn from 'classnames';
+import { FunctionComponent } from 'react';
+import { Draggable, DraggableProps } from 'react-beautiful-dnd';
+
 import {
   ListItemBodyComponentProps,
   ListItemComponentProps,
-} from 'components/TransferList/TransferListList';
-import { FunctionComponent } from 'react';
-import { Draggable, DraggableProps } from 'react-beautiful-dnd';
+} from '../../components/TransferList/TransferListList';
 
 export interface DraggableItemProps
   extends Omit<DraggableProps, 'draggableId' | 'children'> {

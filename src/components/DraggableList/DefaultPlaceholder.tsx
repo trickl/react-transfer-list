@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { FunctionComponent } from 'react';
 
-const Container = styled('div')(() => ({
+const Container = styled('div')((theme) => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',

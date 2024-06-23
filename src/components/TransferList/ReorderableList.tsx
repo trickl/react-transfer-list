@@ -29,7 +29,7 @@ export interface ReorderableListProps
   ids: string[];
 
   /** Called when a request to change the order of the items is made. */
-  onChange: (ids: string[]) => void;
+  onChange?: (ids: string[]) => void;
 
   /** Specify a custom component to render a drag handle. */
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
@@ -65,7 +65,7 @@ export const ReorderableList: FunctionComponent<ReorderableListProps> = ({
 }: ReorderableListProps) => {
   const handleChange = useCallback(
     (_: string, ids: string[]) => {
-      onChange(ids);
+      onChange?.(ids);
     },
     [onChange]
   );

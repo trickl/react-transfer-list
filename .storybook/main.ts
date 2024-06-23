@@ -1,13 +1,18 @@
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import { StorybookConfig } from '@storybook/react-vite';
 
 const config: StorybookConfig = {
   // Required
-  framework: '@storybook/react-webpack5',
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  framework: '@storybook/react-vite',
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   // Optional
-  addons: [],
-  docs: {
-    autodocs: 'tag',
+  addons: [
+    '@storybook/addon-themes',
+    '@chromatic-com/storybook',
+  ],
+  docs: {},
+  typescript: {
+    check: true,
+    reactDocgen: 'react-docgen-typescript',
   },
 };
 

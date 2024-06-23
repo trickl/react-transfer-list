@@ -10,7 +10,7 @@ const classes = {
   container: `${PREFIX}-container`,
 };
 
-const Container = styled('div')(() => ({
+const Container = styled('div')((theme) => ({
   [`&.${classes.container}`]: {
     display: 'flex',
     flexDirection: 'row',
