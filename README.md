@@ -155,7 +155,3 @@ const App = () => {
 | options | `` |  |  | Additional configuration options for drag and drop behaviour. |
 
 <!-- props-table-end -->
-
-### Storybook
-[Visit The Storybook Page](
-https://master--617ed0e7e88637004aa2ac53.chromatic.com/?path=/story/transfer-list--three-way-example)
