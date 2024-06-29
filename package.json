@@ -1,6 +1,6 @@
 {
   "name": "react-transfer-list",
-  "version": "1.6.0",
+  "version": "1.6.2",
   "type": "module",
   "description": "A Material UI based Transfer List supporting drag and drop",
   "repository": "https://github.com/trickl/react-transfer-list",
