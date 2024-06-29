@@ -3,6 +3,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/b5f92597060361dda169/maintainability)](https://codeclimate.com/github/trickl/react-transfer-list/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/b5f92597060361dda169/test_coverage)](https://codeclimate.com/github/trickl/react-transfer-list/test_coverage)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![NPM](https://img.shields.io/npm/v/react-transfer-list)](https://www.npmjs.com/package/react-transfer-list)
 
 A customizable Transfer List supporting drag and drop.
 
