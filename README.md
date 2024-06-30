@@ -1,4 +1,7 @@
-# React Transfer List
+<div align="center">
+  <img src="https://github.com/trickl/react-transfer-list/blob/master/react-transfer-list-logo.png" alt="React Transfer List" style="width:150px;"/>  
+  <h1>React Transfer List</h1>
+</div>
 
 [![Build Status](https://app.travis-ci.com/trickl/react-transfer-list.svg?branch=master)](https://app.travis-ci.com/trickl/react-transfer-list)
 [![Maintainability](https://api.codeclimate.com/v1/badges/b5f92597060361dda169/maintainability)](https://codeclimate.com/github/trickl/react-transfer-list/maintainability)
