@@ -1,6 +1,6 @@
 {
   "name": "react-transfer-list",
-  "version": "1.6.3",
+  "version": "1.6.4",
   "type": "module",
   "description": "A Material UI based Transfer List supporting drag and drop",
   "repository": "https://github.com/trickl/react-transfer-list",
@@ -33,8 +33,11 @@
     "@chromatic-com/storybook": "^1.5.0",
     "@mui/icons-material": "^5.15.20",
     "@mui/material": "^5.15.20",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "@storybook/addon-themes": "^8.1.10",
     "@storybook/builder-vite": "^8.1.10",
+    "@storybook/cli": "^8.1.10",
     "@storybook/react": "^8.1.10",
     "@storybook/react-vite": "^8.1.10",
     "@testing-library/react": "^16.0.0",
@@ -103,9 +106,6 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@rollup/plugin-commonjs": "^26.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@storybook/cli": "^8.1.10",
     "classnames": "^2.5.1",
     "react-beautiful-dnd": "^13.1.1"
   }
