@@ -2,8 +2,11 @@ import { Card, List, ListItem, Paper, Typography } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ReactNode } from 'react';
 
-import { TransferListList, TransferListListProps } from './TransferListList';
-import { UncontrolledTransferList } from './UncontrolledTransferList';
+import {
+  TransferListList,
+  TransferListListProps,
+} from '../components/TransferList/TransferListList';
+import { UncontrolledTransferList } from '../components/TransferList/UncontrolledTransferList';
 
 const meta = {
   component: UncontrolledTransferList,

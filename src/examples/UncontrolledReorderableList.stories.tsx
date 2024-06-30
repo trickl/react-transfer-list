@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { UncontrolledReorderableList } from './UncontrolledReorderableList';
+import { UncontrolledReorderableList } from '../components/TransferList/UncontrolledReorderableList';
 
 const meta = {
   component: UncontrolledReorderableList,
