@@ -88,7 +88,7 @@
     ]
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run lint && rollup -c",
     "test": "jest",
     "lint": "npm run eslint",
     "eslint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
