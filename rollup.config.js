@@ -5,7 +5,14 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 const rollupConfig = {
   input: './src/index.ts',
-  external: ['react', 'react-dom', 'prop-types'],
+  external: [
+    'react',
+    'react-dom',
+    'prop-types',
+    '@emotion/react',
+    '@emotion/styled',
+    'react-beautiful-dnd',
+  ],
   output: [
     {
       file: "dist/index.js",
