@@ -5,8 +5,8 @@ import Grid from '@mui/material/Grid';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import type { Meta, StoryObj } from '@storybook/react';
-import { FunctionComponent, ReactNode, useState } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { ComponentProps, FunctionComponent, ReactNode, useState } from 'react';
 
 import { TransferList } from '../components/TransferList/TransferList';
 import { TransferListList } from '../components/TransferList/TransferListList';
@@ -137,8 +137,8 @@ function MaterialUITransferList({ ids }: TransferListProps) {
       onChange={handleChange}
     >
       <Grid container spacing={2} justifyContent="center" alignItems="center">
-        <Grid item>{customList('left')}</Grid>
-        <Grid item>
+        <Grid>{customList('left')}</Grid>
+        <Grid>
           <Grid container direction="column" alignItems="center">
             <Button
               sx={{ my: 0.5 }}
@@ -182,7 +182,7 @@ function MaterialUITransferList({ ids }: TransferListProps) {
             </Button>
           </Grid>
         </Grid>
-        <Grid item>{customList('right')}</Grid>
+        <Grid>{customList('right')}</Grid>
       </Grid>
     </TransferList>
   );
@@ -196,7 +196,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const MaterialUIExample: Story = {
-  render: (args) => <MaterialUITransferList {...args} />,
+  render: (args: ComponentProps<typeof MaterialUITransferList>) => (
+    <MaterialUITransferList {...args} />
+  ),
   args: {
     ids: {
       first: Array.from({ length: 4 }).map((_, i) => i),

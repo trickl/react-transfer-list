@@ -23,8 +23,10 @@ const Container = styled('div')(() => ({
   [`&.${classes.container}`]: {},
 }));
 
-export interface ReorderableListProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
+export interface ReorderableListProps extends Omit<
+  HTMLProps<HTMLDivElement>,
+  'onChange'
+> {
   /** The ids of the items in the list. */
   ids: string[];
 

@@ -17,8 +17,10 @@ const Container = styled('div')((theme) => ({
   },
 }));
 
-export interface TransferListProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
+export interface TransferListProps extends Omit<
+  HTMLProps<HTMLDivElement>,
+  'onChange'
+> {
   /** The ids of the lists and the respective ids of each item in each list. */
   ids: { [listId: string]: string[] };
 

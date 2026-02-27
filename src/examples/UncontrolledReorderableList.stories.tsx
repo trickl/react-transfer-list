@@ -7,7 +7,7 @@ import {
   ListItemAvatar,
   ListItemText,
 } from '@mui/material';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { UncontrolledReorderableList } from '../components/TransferList/UncontrolledReorderableList';
 

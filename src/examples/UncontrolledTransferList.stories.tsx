@@ -1,5 +1,5 @@
 import { Card, List, ListItem, Paper, Typography } from '@mui/material';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ReactNode } from 'react';
 
 import {

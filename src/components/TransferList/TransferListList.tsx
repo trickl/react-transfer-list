@@ -48,8 +48,10 @@ const StyledDraggableList = styled(DraggableList)(() => ({
   },
 }));
 
-export interface TransferListListProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'as' | 'placeholder'> {
+export interface TransferListListProps extends Omit<
+  HTMLProps<HTMLDivElement>,
+  'onDragEnd' | 'as' | 'placeholder'
+> {
   /** The id of the list. */
   id: string;
 
