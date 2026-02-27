@@ -8,8 +8,10 @@ import {
   ListItemComponentProps,
 } from '../../components/TransferList/TransferListList';
 
-export interface DraggableItemProps
-  extends Omit<DraggableProps, 'draggableId' | 'children'> {
+export interface DraggableItemProps extends Omit<
+  DraggableProps,
+  'draggableId' | 'children'
+> {
   id: string;
   listId: string;
   index: number;

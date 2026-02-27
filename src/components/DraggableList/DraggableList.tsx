@@ -28,8 +28,10 @@ export interface DraggableListOptions {
   droppable?: Omit<DroppableProps, 'droppableId' | 'children'>;
 }
 
-export interface DraggableListProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'onDragEnd' | 'placeholder'> {
+export interface DraggableListProps extends Omit<
+  HTMLProps<HTMLDivElement>,
+  'onDragEnd' | 'placeholder'
+> {
   ids: string[];
   onDragEnd: OnDragEndResponder;
   dragHandleComponent?: FunctionComponent<Record<string, never>>;
